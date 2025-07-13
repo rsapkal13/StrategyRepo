@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data & AI Teams RACI Matrix</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #2c3e50;
+            line-height: 1.4;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2em;
+            font-weight: 300;
+        }
+        
+        .header p {
+            margin: 8px 0 0 0;
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+        
+        .legend {
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .legend h3 {
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+            font-size: 1.2em;
+        }
+        
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .legend-badge {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .legend-badge.r { background: #e74c3c; }
+        .legend-badge.a { background: #f39c12; }
+        .legend-badge.c { background: #3498db; }
+        .legend-badge.i { background: #95a5a6; }
+        
+        .table-container {
+            overflow-x: auto;
+            padding: 20px;
+        }
+        
+        .raci-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+        }
+        
+        .raci-table th,
+        .raci-table td {
+            padding: 10px 8px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+        
+        .raci-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .raci-table .activity-header {
+            background: #2c3e50;
+            color: white;
+            font-weight: 600;
+            text-align: left;
+            padding: 12px;
+        }
+        
+        .raci-table .activity-name {
+            text-align: left;
+            background: #f8f9fa;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .raci-cell {
+            font-weight: bold;
+            color: white;
+            border-radius: 4px;
+            padding: 6px;
+            min-width: 24px;
+        }
+        
+        .raci-cell.r { background: #e74c3c; }
+        .raci-cell.a { background: #f39c12; }
+        .raci-cell.c { background: #3498db; }
+        .raci-cell.i { background: #95a5a6; }
+        .raci-cell.empty { background: #ecf0f1; color: #bdc3c7; }
+        
+        .team-header {
+            background: #34495e !important;
+            color: white !important;
+            writing-mode: vertical-lr;
+            text-orientation: mixed;
+            min-width: 90px;
+            font-weight: 600;
+            padding: 15px 8px;
+        }
+        
+        .section-divider {
+            background: #34495e;
+            height: 2px;
+        }
+        
+        .notes {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .notes h3 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+        }
+        
+        .notes ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .notes li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Data & AI Teams RACI Matrix</h1>
+            <p>Simplified Roles & Responsibilities - Data Science, Advanced Analytics, AI Engineering, Data Engineering & Group IT Arch CoE</p>
+        </div>
+        
+        <div class="legend">
+            <h3>RACI Legend</h3>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <div class="legend-badge r">R</div>
+                    <span><strong>Responsible</strong> - Does the work</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-badge a">A</div>
+                    <span><strong>Accountable</strong> - Ensures completion</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-badge c">C</div>
+                    <span><strong>Consulted</strong> - Provides input</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-badge i">I</div>
+                    <span><strong>Informed</strong> - Kept updated</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="table-container">
+            <table class="raci-table">
+                <thead>
+                    <tr>
+                        <th style="width: 300px;">Activities</th>
+                        <th class="team-header">Data Science</th>
+                        <th class="team-header">Advanced Analytics</th>
+                        <th class="team-header">AI Engineering</th>
+                        <th class="team-header">Data Engineering</th>
+                        <th class="team-header">Group IT Arch CoE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- STRATEGY & PLANNING -->
+                    <tr><td class="activity-header" colspan="6">STRATEGY & PLANNING</td></tr>
+                    <tr>
+                        <td class="activity-name">Business Problem Definition</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell a">A</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell i">I</td>
+                        <td class="raci-cell i">I</td>
+                    </tr>
+                    <tr>
+                        <td class="activity-name">Technology Strategy & Roadmap</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell a">A</td>
+                    </tr>
+                    <tr>
+                        <td class="activity-name">Solution Architecture Design</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell a">A</td>
+                        <td class="raci-cell r">R</td>
+                        <td class="raci-cell c">C</td>
+                    </tr>
+                    
+                    <!-- DATA MANAGEMENT -->
+                    <tr><td class="section-divider" colspan="6"></td></tr>
+                    <tr><td class="activity-header" colspan="6">DATA MANAGEMENT</td></tr>
+                    <tr>
+                        <td class="activity-name">Data Strategy & Governance</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell a">A</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell r">R</td>
+                        <td class="raci-cell c">C</td>
+                    </tr>
+                    <tr>
+                        <td class="activity-name">Data Infrastructure & Pipelines</td>
+                        <td class="raci-cell i">I</td>
+                        <td class="raci-cell i">I</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell a">A</td>
+                        <td class="raci-cell c">C</td>
+                    </tr>
+                    <tr>
+                        <td class="activity-name">Data Quality & Standards</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell r">R</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell a">A</td>
+                        <td class="raci-cell i">I</td>
+                    </tr>
+                    
+                    <!-- AI/ML SOLUTIONS -->
+                    <tr><td class="section-divider" colspan="6"></td></tr>
+                    <tr><td class="activity-header" colspan="6">AI/ML SOLUTIONS</td></tr>
+                    <tr>
+                        <td class="activity-name">Model Development & Research</td>
+                        <td class="raci-cell a">A</td>
+                        <td class="raci-cell r">R</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell i">I</td>
+                    </tr>
+                    <tr>
+                        <td class="activity-name">AI/ML Platform & Operations</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell a">A</td>
+                        <td class="raci-cell r">R</td>
+                        <td class="raci-cell c">C</td>
+                    </tr>
+                    <tr>
+                        <td class="activity-name">Model Deployment & Serving</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell i">I</td>
+                        <td class="raci-cell a">A</td>
+                        <td class="raci-cell r">R</td>
+                        <td class="raci-cell i">I</td>
+                    </tr>
+                    
+                    <!-- ANALYTICS & INSIGHTS -->
+                    <tr><td class="section-divider" colspan="6"></td></tr>
+                    <tr><td class="activity-header" colspan="6">ANALYTICS & INSIGHTS</td></tr>
+                    <tr>
+                        <td class="activity-name">Business Intelligence & Reporting</td>
+                        <td class="raci-cell r">R</td>
+                        <td class="raci-cell a">A</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell i">I</td>
+                    </tr>
+                    <tr>
+                        <td class="activity-name">Advanced Analytics & Modeling</td>
+                        <td class="raci-cell a">A</td>
+                        <td class="raci-cell r">R</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell i">I</td>
+                    </tr>
+                    <tr>
+                        <td class="activity-name">Data Visualization & Dashboards</td>
+                        <td class="raci-cell r">R</td>
+                        <td class="raci-cell a">A</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell i">I</td>
+                    </tr>
+                    
+                    <!-- OPERATIONS & MONITORING -->
+                    <tr><td class="section-divider" colspan="6"></td></tr>
+                    <tr><td class="activity-header" colspan="6">OPERATIONS & MONITORING</td></tr>
+                    <tr>
+                        <td class="activity-name">Model Performance & Monitoring</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell r">R</td>
+                        <td class="raci-cell a">A</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell i">I</td>
+                    </tr>
+                    <tr>
+                        <td class="activity-name">System Performance & Infrastructure</td>
+                        <td class="raci-cell i">I</td>
+                        <td class="raci-cell i">I</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell a">A</td>
+                        <td class="raci-cell c">C</td>
+                    </tr>
+                    <tr>
+                        <td class="activity-name">Incident Response & Support</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell a">A</td>
+                        <td class="raci-cell r">R</td>
+                        <td class="raci-cell c">C</td>
+                    </tr>
+                    
+                    <!-- GOVERNANCE & COMPLIANCE -->
+                    <tr><td class="section-divider" colspan="6"></td></tr>
+                    <tr><td class="activity-header" colspan="6">GOVERNANCE & COMPLIANCE</td></tr>
+                    <tr>
+                        <td class="activity-name">AI Ethics & Risk Management</td>
+                        <td class="raci-cell a">A</td>
+                        <td class="raci-cell r">R</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell i">I</td>
+                        <td class="raci-cell c">C</td>
+                    </tr>
+                    <tr>
+                        <td class="activity-name">Data Privacy & Security</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell r">R</td>
+                        <td class="raci-cell a">A</td>
+                    </tr>
+                    <tr>
+                        <td class="activity-name">Enterprise Standards & Compliance</td>
+                        <td class="raci-cell i">I</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell a">A</td>
+                    </tr>
+                    
+                    <!-- STAKEHOLDER ENGAGEMENT -->
+                    <tr><td class="section-divider" colspan="6"></td></tr>
+                    <tr><td class="activity-header" colspan="6">STAKEHOLDER ENGAGEMENT</td></tr>
+                    <tr>
+                        <td class="activity-name">Business Stakeholder Communication</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell a">A</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell i">I</td>
+                    </tr>
+                    <tr>
+                        <td class="activity-name">Technical Architecture Reviews</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell r">R</td>
+                        <td class="raci-cell r">R</td>
+                        <td class="raci-cell a">A</td>
+                    </tr>
+                    <tr>
+                        <td class="activity-name">Knowledge Transfer & Training</td>
+                        <td class="raci-cell r">R</td>
+                        <td class="raci-cell a">A</td>
+                        <td class="raci-cell r">R</td>
+                        <td class="raci-cell c">C</td>
+                        <td class="raci-cell c">C</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="notes">
+            <h3>Simplified RACI Matrix - Key Team Responsibilities</h3>
+            <ul>
+                <li><strong>Group IT Arch CoE:</strong> Enterprise technology strategy, architecture governance, security standards, and infrastructure enablement</li>
+                <li><strong>Advanced Analytics:</strong> Business alignment, data governance strategy, stakeholder communication, and business intelligence</li>
+                <li><strong>AI Engineering:</strong> AI/ML solution architecture, platform operations, model deployment, and incident response</li>
+                <li><strong>Data Engineering:</strong> Data infrastructure, pipelines, quality implementation, and system performance</li>
+                <li><strong>Data Science:</strong> Model development, statistical analysis, research activities, and AI ethics assessment</li>
+                <li><strong>Clear Separation:</strong> IT CoE handles enterprise/platform enablement; Data & AI teams handle solution design and implementation</li>
+                <li><strong>Collaboration Points:</strong> Regular architecture reviews, technical consultations, and cross-team coordination meetings</li>
+                <li><strong>Simplified Activities:</strong> High-level, abstract categories covering end-to-end capabilities rather than granular tasks</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
