@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science & Advanced Analytics - Career Progression Roadmap</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 30%, #f093fb 70%, #f5576c 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #2c3e50;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(245, 87, 108, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(240, 147, 251, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            box-shadow: 0 30px 100px rgba(0,0,0,0.2);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            color: white;
+            padding: 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.3; }
+            50% { transform: scale(1.1) rotate(180deg); opacity: 0.7; }
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            font-weight: 300;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.4em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .timeline-nav {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            border-bottom: 2px solid rgba(102, 126, 234, 0.1);
+        }
+        
+        .timeline-period {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #e9ecef;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-period:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+        
+        .timeline-period.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .roles-container {
+            padding: 40px;
+        }
+        
+        .role-section {
+            margin-bottom: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .role-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+        }
+        
+        .role-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #4a90e2 100%);
+            color: white;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .role-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            animation: shimmer 4s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .role-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .role-level {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .progression-timeline {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0;
+        }
+        
+        .period-column {
+            padding: 30px 20px;
+            border-right: 1px solid #e9ecef;
+            min-height: 400px;
+            position: relative;
+        }
+        
+        .period-column:last-child {
+            border-right: none;
+        }
+        
+        .period-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .period-title {
+            font-weight: 600;
+            font-size: 1.1em;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .period-duration {
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .skills-section {
+            margin-bottom: 25px;
+        }
+        
+        .skills-category {
+            font-weight: 600;
+            font-size: 0.95em;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            padding: 8px 12px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+        
+        .skill-item {
+            background: rgba(255, 255, 255, 0.8);
+            margin: 8px 0;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 0.85em;
+            border-left: 3px solid;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .skill-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .skill-foundational { border-left-color: #95a5a6; }
+        .skill-intermediate { border-left-color: #3498db; }
+        .skill-advanced { border-left-color: #e74c3c; }
+        .skill-expert { border-left-color: #9b59b6; }
+        .skill-leadership { border-left-color: #f39c12; }
+        
+        .progression-arrow {
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #667eea, #f093fb);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .career-paths {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 30%, #f093fb 100%);
+            color: white;
+            padding: 40px;
+            margin: 40px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .career-paths::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .career-paths-title {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .paths-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .path-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .path-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+            background: rgba(255,255,255,0.25);
+        }
+        
+        .path-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .path-progression {
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        
+        .key-metrics {
+            background: #f8f9fa;
+            padding: 40px;
+            margin: 30px 40px;
+            border-radius: 20px;
+            text-align: center;
+        }
+        
+        .metrics-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+        
+        .metric-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-top: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .metric-label {
+            font-size: 1em;
+            color: #666;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Data Science & Advanced Analytics</h1>
+            <div class="subtitle">Career Progression Roadmap (2025-2027) • 6-Month Intervals</div>
+        </div>
+        
+        <div class="timeline-nav">
+            <div class="timeline-period active">6M</div>
+            <div class="timeline-period">12M</div>
+            <div class="timeline-period">18M</div>
+            <div class="timeline-period">24M</div>
+            <div class="timeline-period">30M</div>
+            <div class="timeline-period">36M</div>
+        </div>
+        
+        <div class="roles-container">
+            <!-- DATA & AI SCIENTIST -->
+            <div class="role-section">
+                <div class="role-header">
+                    <div class="role-title">🔬 Data & AI Scientist</div>
+                    <div class="role-level">Entry to Mid-Level • Foundation to Advanced AI Practitioner</div>
+                </div>
+                <div class="progression-timeline">
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Foundation</div>
+                            <div class="period-duration">0-6 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Core Skills</div>
+                            <div class="skill-item skill-foundational">Python/R Programming</div>
+                            <div class="skill-item skill-foundational">Statistics & Probability</div>
+                            <div class="skill-item skill-foundational">Data Manipulation (Pandas, SQL)</div>
+                            <div class="skill-item skill-foundational">Basic ML Algorithms</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">AI Focus</div>
+                            <div class="skill-item skill-foundational">Azure OpenAI Service</div>
+                            <div class="skill-item skill-foundational">Prompt Engineering</div>
+                            <div class="skill-item skill-foundational">AI Ethics & Bias</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Tools</div>
+                            <div class="skill-item skill-foundational">Jupyter Notebooks</div>
+                            <div class="skill-item skill-foundational">Azure ML Studio</div>
+                            <div class="skill-item skill-foundational">Power BI</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Development</div>
+                            <div class="period-duration">6-12 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Advanced Analytics</div>
+                            <div class="skill-item skill-intermediate">Time Series Forecasting</div>
+                            <div class="skill-item skill-intermediate">Advanced Statistical Models</div>
+                            <div class="skill-item skill-intermediate">Feature Engineering</div>
+                            <div class="skill-item skill-intermediate">Model Validation</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">AI Specialization</div>
+                            <div class="skill-item skill-intermediate">Natural Language Processing</div>
+                            <div class="skill-item skill-intermediate">Computer Vision Basics</div>
+                            <div class="skill-item skill-intermediate">Generative AI Applications</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Telco Domain</div>
+                            <div class="skill-item skill-intermediate">Network Analytics</div>
+                            <div class="skill-item skill-intermediate">Customer Churn Analysis</div>
+                            <div class="skill-item skill-intermediate">Telecom KPIs</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Specialization</div>
+                            <div class="period-duration">12-18 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Deep Learning</div>
+                            <div class="skill-item skill-advanced">Neural Networks</div>
+                            <div class="skill-item skill-advanced">Deep Learning Frameworks</div>
+                            <div class="skill-item skill-advanced">Transfer Learning</div>
+                            <div class="skill-item skill-advanced">Model Optimization</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">MLOps</div>
+                            <div class="skill-item skill-advanced">Model Deployment</div>
+                            <div class="skill-item skill-advanced">CI/CD for ML</div>
+                            <div class="skill-item skill-advanced">Model Monitoring</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Azure AI Platform</div>
+                            <div class="skill-item skill-advanced">Azure AI Foundry</div>
+                            <div class="skill-item skill-advanced">Custom Model Training</div>
+                            <div class="skill-item skill-advanced">Azure Cognitive Services</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Advanced Practice</div>
+                            <div class="period-duration">18-24 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Advanced AI</div>
+                            <div class="skill-item skill-expert">Large Language Models</div>
+                            <div class="skill-item skill-expert">Multimodal AI</div>
+                            <div class="skill-item skill-expert">AI Agent Development</div>
+                            <div class="skill-item skill-expert">Reinforcement Learning</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Research & Innovation</div>
+                            <div class="skill-item skill-expert">Experimental Design</div>
+                            <div class="skill-item skill-expert">A/B Testing for AI</div>
+                            <div class="skill-item skill-expert">Research Publications</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Business Impact</div>
+                            <div class="skill-item skill-expert">ROI Measurement</div>
+                            <div class="skill-item skill-expert">Stakeholder Communication</div>
+                            <div class="skill-item skill-expert">Cross-functional Leadership</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Technical Leadership</div>
+                            <div class="period-duration">24-30 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Technical Strategy</div>
+                            <div class="skill-item skill-leadership">AI Architecture Design</div>
+                            <div class="skill-item skill-leadership">Technology Roadmapping</div>
+                            <div class="skill-item skill-leadership">Technical Mentoring</div>
+                            <div class="skill-item skill-leadership">Innovation Leadership</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Advanced Systems</div>
+                            <div class="skill-item skill-leadership">Distributed AI Systems</div>
+                            <div class="skill-item skill-leadership">Real-time ML Pipelines</div>
+                            <div class="skill-item skill-leadership">Edge AI Deployment</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Industry Expertise</div>
+                            <div class="skill-item skill-leadership">5G/6G AI Applications</div>
+                            <div class="skill-item skill-leadership">Network Intelligence</div>
+                            <div class="skill-item skill-leadership">IoT Analytics</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Senior Expert</div>
+                            <div class="period-duration">30-36 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Thought Leadership</div>
+                            <div class="skill-item skill-leadership">Industry Speaking</div>
+                            <div class="skill-item skill-leadership">Research Direction</div>
+                            <div class="skill-item skill-leadership">Patent Development</div>
+                            <div class="skill-item skill-leadership">Standards Contribution</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Strategic Innovation</div>
+                            <div class="skill-item skill-leadership">Emerging Tech Evaluation</div>
+                            <div class="skill-item skill-leadership">AI Ethics Leadership</div>
+                            <div class="skill-item skill-leadership">Regulatory Expertise</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Organizational Impact</div>
+                            <div class="skill-item skill-leadership">AI Transformation Strategy</div>
+                            <div class="skill-item skill-leadership">Executive Communication</div>
+                            <div class="skill-item skill-leadership">Cultural Change Leadership</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PRINCIPAL DATA & AI SCIENTIST -->
+            <div class="role-section">
+                <div class="role-header">
+                    <div class="role-title">🎯 Principal Data & AI Scientist</div>
+                    <div class="role-level">Senior Level • Strategic AI Innovation Leader</div>
+                </div>
+                <div class="progression-timeline">
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Strategic Foundation</div>
+                            <div class="period-duration">0-6 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Leadership Foundation</div>
+                            <div class="skill-item skill-intermediate">Team Leadership</div>
+                            <div class="skill-item skill-intermediate">Strategic Planning</div>
+                            <div class="skill-item skill-intermediate">Research Direction</div>
+                            <div class="skill-item skill-intermediate">Cross-team Collaboration</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Advanced AI Systems</div>
+                            <div class="skill-item skill-advanced">AI Architecture Patterns</div>
+                            <div class="skill-item skill-advanced">Multi-modal AI Systems</div>
+                            <div class="skill-item skill-advanced">AI Governance Frameworks</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Business Alignment</div>
+                            <div class="skill-item skill-intermediate">Business Case Development</div>
+                            <div class="skill-item skill-intermediate">Value Proposition Design</div>
+                            <div class="skill-item skill-intermediate">Stakeholder Management</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Innovation Leadership</div>
+                            <div class="period-duration">6-12 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Research Excellence</div>
+                            <div class="skill-item skill-advanced">Original Research</div>
+                            <div class="skill-item skill-advanced">Publication Leadership</div>
+                            <div class="skill-item skill-advanced">Conference Presentations</div>
+                            <div class="skill-item skill-advanced">Peer Review</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Technology Strategy</div>
+                            <div class="skill-item skill-expert">Emerging AI Technologies</div>
+                            <div class="skill-item skill-expert">Technology Roadmapping</div>
+                            <div class="skill-item skill-expert">Innovation Portfolio</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Industry Leadership</div>
+                            <div class="skill-item skill-advanced">Industry Partnerships</div>
+                            <div class="skill-item skill-advanced">Standards Development</div>
+                            <div class="skill-item skill-advanced">Thought Leadership</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Strategic Impact</div>
+                            <div class="period-duration">12-18 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Organizational Transformation</div>
+                            <div class="skill-item skill-expert">AI Strategy Development</div>
+                            <div class="skill-item skill-expert">Cultural Change Leadership</div>
+                            <div class="skill-item skill-expert">Executive Influence</div>
+                            <div class="skill-item skill-expert">Change Management</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Advanced Research</div>
+                            <div class="skill-item skill-expert">Cutting-edge AI Research</div>
+                            <div class="skill-item skill-expert">Patent Development</div>
+                            <div class="skill-item skill-expert">Research Funding</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">External Impact</div>
+                            <div class="skill-item skill-expert">Industry Advisory Roles</div>
+                            <div class="skill-item skill-expert">Academic Collaboration</div>
+                            <div class="skill-item skill-expert">Regulatory Engagement</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Visionary Leadership</div>
+                            <div class="period-duration">18-24 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Future Technology</div>
+                            <div class="skill-item skill-leadership">6G AI Integration</div>
+                            <div class="skill-item skill-leadership">Quantum-AI Hybrid</div>
+                            <div class="skill-item skill-leadership">Autonomous Networks</div>
+                            <div class="skill-item skill-leadership">Edge Intelligence</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Strategic Innovation</div>
+                            <div class="skill-item skill-leadership">Innovation Ecosystem</div>
+                            <div class="skill-item skill-leadership">Venture Assessment</div>
+                            <div class="skill-item skill-leadership">Technology Acquisition</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Global Influence</div>
+                            <div class="skill-item skill-leadership">International Standards</div>
+                            <div class="skill-item skill-leadership">Global Research Networks</div>
+                            <div class="skill-item skill-leadership">Policy Influence</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                                            <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Industry Pioneer</div>
+                            <div class="period-duration">24-30 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Technology Leadership</div>
+                            <div class="skill-item skill-leadership">Next-Gen AI Architectures</div>
+                            <div class="skill-item skill-leadership">Breakthrough Research</div>
+                            <div class="skill-item skill-leadership">Technology Evangelism</div>
+                            <div class="skill-item skill-leadership">Innovation Accelerators</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Organizational Excellence</div>
+                            <div class="skill-item skill-leadership">AI Center of Excellence</div>
+                            <div class="skill-item skill-leadership">Talent Development</div>
+                            <div class="skill-item skill-leadership">Knowledge Transfer</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Strategic Partnerships</div>
+                            <div class="skill-item skill-leadership">Ecosystem Development</div>
+                            <div class="skill-item skill-leadership">Strategic Alliances</div>
+                            <div class="skill-item skill-leadership">Cross-industry Innovation</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Global Authority</div>
+                            <div class="period-duration">30-36 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Global Recognition</div>
+                            <div class="skill-item skill-leadership">International Awards</div>
+                            <div class="skill-item skill-leadership">Industry Board Positions</div>
+                            <div class="skill-item skill-leadership">Global Advisory Roles</div>
+                            <div class="skill-item skill-leadership">Keynote Speaking</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Legacy Building</div>
+                            <div class="skill-item skill-leadership">Institutional Knowledge</div>
+                            <div class="skill-item skill-leadership">Succession Planning</div>
+                            <div class="skill-item skill-leadership">Industry Transformation</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Future Vision</div>
+                            <div class="skill-item skill-leadership">Decade-long Roadmaps</div>
+                            <div class="skill-item skill-leadership">Societal Impact</div>
+                            <div class="skill-item skill-leadership">Ethical AI Leadership</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ANALYTICS SPECIALIST -->
+            <div class="role-section">
+                <div class="role-header">
+                    <div class="role-title">📊 Analytics Specialist</div>
+                    <div class="role-level">Mid-Level • Business-Focused Analytics Expert</div>
+                </div>
+                <div class="progression-timeline">
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Analytics Foundation</div>
+                            <div class="period-duration">0-6 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Core Analytics</div>
+                            <div class="skill-item skill-foundational">Business Intelligence</div>
+                            <div class="skill-item skill-foundational">Data Visualization</div>
+                            <div class="skill-item skill-foundational">Statistical Analysis</div>
+                            <div class="skill-item skill-foundational">Report Automation</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Tools Mastery</div>
+                            <div class="skill-item skill-foundational">Power BI Advanced</div>
+                            <div class="skill-item skill-foundational">Excel Analytics</div>
+                            <div class="skill-item skill-foundational">Azure Analytics</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Business Skills</div>
+                            <div class="skill-item skill-foundational">Requirements Gathering</div>
+                            <div class="skill-item skill-foundational">Stakeholder Communication</div>
+                            <div class="skill-item skill-foundational">Business Process Mapping</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">AI-Enhanced Analytics</div>
+                            <div class="period-duration">6-12 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">AI Integration</div>
+                            <div class="skill-item skill-intermediate">AI-Powered Dashboards</div>
+                            <div class="skill-item skill-intermediate">Automated Insights</div>
+                            <div class="skill-item skill-intermediate">Predictive Analytics</div>
+                            <div class="skill-item skill-intermediate">Anomaly Detection</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Advanced Visualization</div>
+                            <div class="skill-item skill-intermediate">Interactive Dashboards</div>
+                            <div class="skill-item skill-intermediate">Real-time Analytics</div>
+                            <div class="skill-item skill-intermediate">Mobile Analytics</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Domain Expertise</div>
+                            <div class="skill-item skill-intermediate">Customer Analytics</div>
+                            <div class="skill-item skill-intermediate">Network Performance</div>
+                            <div class="skill-item skill-intermediate">Financial Analytics</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Advanced Analytics</div>
+                            <div class="period-duration">12-18 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Advanced AI Tools</div>
+                            <div class="skill-item skill-advanced">Microsoft Fabric</div>
+                            <div class="skill-item skill-advanced">Azure AI Services</div>
+                            <div class="skill-item skill-advanced">Cognitive Services</div>
+                            <div class="skill-item skill-advanced">AutoML Platforms</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Data Science Bridge</div>
+                            <div class="skill-item skill-advanced">Statistical Modeling</div>
+                            <div class="skill-item skill-advanced">A/B Testing</div>
+                            <div class="skill-item skill-advanced">Experimental Design</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Business Impact</div>
+                            <div class="skill-item skill-advanced">ROI Analysis</div>
+                            <div class="skill-item skill-advanced">Business Case Development</div>
+                            <div class="skill-item skill-advanced">Performance Optimization</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Analytics Leadership</div>
+                            <div class="period-duration">18-24 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Team Leadership</div>
+                            <div class="skill-item skill-expert">Analytics Team Management</div>
+                            <div class="skill-item skill-expert">Project Leadership</div>
+                            <div class="skill-item skill-expert">Cross-functional Coordination</div>
+                            <div class="skill-item skill-expert">Mentoring & Training</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Strategic Analytics</div>
+                            <div class="skill-item skill-expert">Analytics Strategy</div>
+                            <div class="skill-item skill-expert">Data Governance</div>
+                            <div class="skill-item skill-expert">Analytics Architecture</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Innovation</div>
+                            <div class="skill-item skill-expert">Emerging Analytics Tech</div>
+                            <div class="skill-item skill-expert">Process Innovation</div>
+                            <div class="skill-item skill-expert">Solution Architecture</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Senior Analytics Leader</div>
+                            <div class="period-duration">24-30 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Organizational Impact</div>
+                            <div class="skill-item skill-leadership">Analytics Transformation</div>
+                            <div class="skill-item skill-leadership">Data-Driven Culture</div>
+                            <div class="skill-item skill-leadership">Executive Reporting</div>
+                            <div class="skill-item skill-leadership">Strategic Planning</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Advanced Capabilities</div>
+                            <div class="skill-item skill-leadership">AI-Native Analytics</div>
+                            <div class="skill-item skill-leadership">Automated Decision Systems</div>
+                            <div class="skill-item skill-leadership">Predictive Operations</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Industry Expertise</div>
+                            <div class="skill-item skill-leadership">Telco Industry Leadership</div>
+                            <div class="skill-item skill-leadership">Regulatory Analytics</div>
+                            <div class="skill-item skill-leadership">Competitive Intelligence</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Analytics Executive</div>
+                            <div class="period-duration">30-36 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Executive Leadership</div>
+                            <div class="skill-item skill-leadership">C-Suite Communication</div>
+                            <div class="skill-item skill-leadership">Board Presentations</div>
+                            <div class="skill-item skill-leadership">Strategic Decision Support</div>
+                            <div class="skill-item skill-leadership">Organization-wide Impact</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Future Analytics</div>
+                            <div class="skill-item skill-leadership">Next-Gen Analytics</div>
+                            <div class="skill-item skill-leadership">Autonomous Analytics</div>
+                            <div class="skill-item skill-leadership">Prescriptive AI</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Market Leadership</div>
+                            <div class="skill-item skill-leadership">Industry Thought Leadership</div>
+                            <div class="skill-item skill-leadership">Analytics Innovation</div>
+                            <div class="skill-item skill-leadership">Market Intelligence</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ANALYTICS ENGINEER -->
+            <div class="role-section">
+                <div class="role-header">
+                    <div class="role-title">⚙️ Analytics Engineer</div>
+                    <div class="role-level">Technical Specialist • Data Pipeline & Infrastructure Expert</div>
+                </div>
+                <div class="progression-timeline">
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Engineering Foundation</div>
+                            <div class="period-duration">0-6 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Core Engineering</div>
+                            <div class="skill-item skill-foundational">SQL Advanced</div>
+                            <div class="skill-item skill-foundational">Python for Data</div>
+                            <div class="skill-item skill-foundational">Data Pipeline Design</div>
+                            <div class="skill-item skill-foundational">ETL/ELT Processes</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Azure Platform</div>
+                            <div class="skill-item skill-foundational">Azure Data Factory</div>
+                            <div class="skill-item skill-foundational">Azure Synapse</div>
+                            <div class="skill-item skill-foundational">Azure Storage</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Development Practices</div>
+                            <div class="skill-item skill-foundational">Version Control (Git)</div>
+                            <div class="skill-item skill-foundational">CI/CD Basics</div>
+                            <div class="skill-item skill-foundational">Code Quality</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Platform Specialization</div>
+                            <div class="period-duration">6-12 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Advanced Platforms</div>
+                            <div class="skill-item skill-intermediate">Microsoft Fabric</div>
+                            <div class="skill-item skill-intermediate">Azure ML Pipelines</div>
+                            <div class="skill-item skill-intermediate">Databricks</div>
+                            <div class="skill-item skill-intermediate">Apache Spark</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Real-time Systems</div>
+                            <div class="skill-item skill-intermediate">Stream Analytics</div>
+                            <div class="skill-item skill-intermediate">Event Hubs</div>
+                            <div class="skill-item skill-intermediate">Real-time Dashboards</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Data Quality</div>
+                            <div class="skill-item skill-intermediate">Data Validation</div>
+                            <div class="skill-item skill-intermediate">Quality Monitoring</div>
+                            <div class="skill-item skill-intermediate">Error Handling</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">AI Integration</div>
+                            <div class="period-duration">12-18 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">MLOps Engineering</div>
+                            <div class="skill-item skill-advanced">ML Pipeline Automation</div>
+                            <div class="skill-item skill-advanced">Model Deployment</div>
+                            <div class="skill-item skill-advanced">Model Monitoring</div>
+                            <div class="skill-item skill-advanced">A/B Testing Infrastructure</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">AI Infrastructure</div>
+                            <div class="skill-item skill-advanced">GPU Computing</div>
+                            <div class="skill-item skill-advanced">Container Orchestration</div>
+                            <div class="skill-item skill-advanced">Kubernetes for ML</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Advanced Analytics</div>
+                            <div class="skill-item skill-advanced">Feature Engineering</div>
+                            <div class="skill-item skill-advanced">Feature Stores</div>
+                            <div class="skill-item skill-advanced">Data Mesh Architecture</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Senior Engineering</div>
+                            <div class="period-duration">18-24 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Architecture Design</div>
+                            <div class="skill-item skill-expert">Data Architecture</div>
+                            <div class="skill-item skill-expert">System Design</div>
+                            <div class="skill-item skill-expert">Scalability Planning</div>
+                            <div class="skill-item skill-expert">Performance Optimization</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Team Leadership</div>
+                            <div class="skill-item skill-expert">Technical Leadership</div>
+                            <div class="skill-item skill-expert">Code Review</div>
+                            <div class="skill-item skill-expert">Mentoring</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Innovation</div>
+                            <div class="skill-item skill-expert">Emerging Technologies</div>
+                            <div class="skill-item skill-expert">Proof of Concepts</div>
+                            <div class="skill-item skill-expert">Technology Evaluation</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Principal Engineer</div>
+                            <div class="period-duration">24-30 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Strategic Engineering</div>
+                            <div class="skill-item skill-leadership">Technical Strategy</div>
+                            <div class="skill-item skill-leadership">Architecture Governance</div>
+                            <div class="skill-item skill-leadership">Technology Roadmapping</div>
+                            <div class="skill-item skill-leadership">Cross-team Coordination</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Advanced Systems</div>
+                            <div class="skill-item skill-leadership">Distributed Systems</div>
+                            <div class="skill-item skill-leadership">Edge Computing</div>
+                            <div class="skill-item skill-leadership">Real-time AI Systems</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Industry Leadership</div>
+                            <div class="skill-item skill-leadership">Open Source Contribution</div>
+                            <div class="skill-item skill-leadership">Technical Speaking</div>
+                            <div class="skill-item skill-leadership">Industry Standards</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Distinguished Engineer</div>
+                            <div class="period-duration">30-36 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Technical Vision</div>
+                            <div class="skill-item skill-leadership">Next-Gen Architectures</div>
+                            <div class="skill-item skill-leadership">Breakthrough Engineering</div>
+                            <div class="skill-item skill-leadership">Technology Innovation</div>
+                            <div class="skill-item skill-leadership">Technical Excellence</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Organizational Impact</div>
+                            <div class="skill-item skill-leadership">Engineering Culture</div>
+                            <div class="skill-item skill-leadership">Technical Direction</div>
+                            <div class="skill-item skill-leadership">Capability Building</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">External Influence</div>
+                            <div class="skill-item skill-leadership">Industry Recognition</div>
+                            <div class="skill-item skill-leadership">Technical Advisory</div>
+                            <div class="skill-item skill-leadership">Innovation Partnerships</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ANALYTICS ARCHITECT -->
+            <div class="role-section">
+                <div class="role-header">
+                    <div class="role-title">🏗️ Analytics Architect</div>
+                    <div class="role-level">Senior Technical • Enterprise Analytics Design Leader</div>
+                </div>
+                <div class="progression-timeline">
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Architecture Foundation</div>
+                            <div class="period-duration">0-6 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Core Architecture</div>
+                            <div class="skill-item skill-intermediate">Enterprise Architecture</div>
+                            <div class="skill-item skill-intermediate">Solution Design</div>
+                            <div class="skill-item skill-intermediate">Technology Assessment</div>
+                            <div class="skill-item skill-intermediate">Requirements Analysis</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Platform Design</div>
+                            <div class="skill-item skill-intermediate">Azure Architecture</div>
+                            <div class="skill-item skill-intermediate">Data Architecture</div>
+                            <div class="skill-item skill-intermediate">Integration Patterns</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Stakeholder Management</div>
+                            <div class="skill-item skill-intermediate">Business Alignment</div>
+                            <div class="skill-item skill-intermediate">Technical Communication</div>
+                            <div class="skill-item skill-intermediate">Architecture Documentation</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">AI-Native Architecture</div>
+                            <div class="period-duration">6-12 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">AI Architecture Patterns</div>
+                            <div class="skill-item skill-advanced">ML System Design</div>
+                            <div class="skill-item skill-advanced">AI Pipeline Architecture</div>
+                            <div class="skill-item skill-advanced">Model Serving Patterns</div>
+                            <div class="skill-item skill-advanced">AI Governance Design</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Platform Integration</div>
+                            <div class="skill-item skill-advanced">Microsoft Fabric Architecture</div>
+                            <div class="skill-item skill-advanced">Azure AI Services Integration</div>
+                            <div class="skill-item skill-advanced">Hybrid Cloud Design</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Performance & Scale</div>
+                            <div class="skill-item skill-advanced">Scalability Design</div>
+                            <div class="skill-item skill-advanced">Performance Optimization</div>
+                            <div class="skill-item skill-advanced">Cost Optimization</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Enterprise Integration</div>
+                            <div class="period-duration">12-18 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Enterprise Patterns</div>
+                            <div class="skill-item skill-expert">Enterprise Data Architecture</div>
+                            <div class="skill-item skill-expert">API-First Design</div>
+                            <div class="skill-item skill-expert">Microservices Architecture</div>
+                            <div class="skill-item skill-expert">Event-Driven Architecture</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Security & Governance</div>
+                            <div class="skill-item skill-expert">Security Architecture</div>
+                            <div class="skill-item skill-expert">Data Governance Design</div>
+                            <div class="skill-item skill-expert">Compliance Architecture</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Transformation Leadership</div>
+                            <div class="skill-item skill-expert">Digital Transformation</div>
+                            <div class="skill-item skill-expert">Change Management</div>
+                            <div class="skill-item skill-expert">Migration Strategies</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Strategic Architecture</div>
+                            <div class="period-duration">18-24 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Strategic Design</div>
+                            <div class="skill-item skill-leadership">Technology Strategy</div>
+                            <div class="skill-item skill-leadership">Architecture Roadmapping</div>
+                            <div class="skill-item skill-leadership">Innovation Architecture</div>
+                            <div class="skill-item skill-leadership">Future-State Design</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Organizational Impact</div>
+                            <div class="skill-item skill-leadership">Architecture Governance</div>
+                            <div class="skill-item skill-leadership">Standards Development</div>
+                            <div class="skill-item skill-leadership">Capability Development</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Executive Engagement</div>
+                            <div class="skill-item skill-leadership">C-Suite Communication</div>
+                            <div class="skill-item skill-leadership">Business Case Development</div>
+                            <div class="skill-item skill-leadership">Strategic Planning</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Chief Architect</div>
+                            <div class="period-duration">24-30 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Enterprise Leadership</div>
+                            <div class="skill-item skill-leadership">Enterprise Architecture Strategy</div>
+                            <div class="skill-item skill-leadership">Technology Vision</div>
+                            <div class="skill-item skill-leadership">Architecture Excellence</div>
+                            <div class="skill-item skill-leadership">Cross-Domain Integration</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Industry Innovation</div>
+                            <div class="skill-item skill-leadership">Next-Gen Architectures</div>
+                            <div class="skill-item skill-leadership">Emerging Technology Integration</div>
+                            <div class="skill-item skill-leadership">Industry Best Practices</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Ecosystem Development</div>
+                            <div class="skill-item skill-leadership">Partner Architecture</div>
+                            <div class="skill-item skill-leadership">Vendor Relationships</div>
+                            <div class="skill-item skill-leadership">Technology Alliances</div>
+                        </div>
+                        <div class="progression-arrow">→</div>
+                    </div>
+                    
+                    <div class="period-column">
+                        <div class="period-header">
+                            <div class="period-title">Distinguished Architect</div>
+                            <div class="period-duration">30-36 Months</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Visionary Leadership</div>
+                            <div class="skill-item skill-leadership">Architecture Vision</div>
+                            <div class="skill-item skill-leadership">Industry Transformation</div>
+                            <div class="skill-item skill-leadership">Technology Evangelism</div>
+                            <div class="skill-item skill-leadership">Thought Leadership</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Global Influence</div>
+                            <div class="skill-item skill-leadership">Global Architecture Standards</div>
+                            <div class="skill-item skill-leadership">Industry Advisory Roles</div>
+                            <div class="skill-item skill-leadership">International Recognition</div>
+                        </div>
+                        <div class="skills-section">
+                            <div class="skills-category">Legacy Building</div>
+                            <div class="skill-item skill-leadership">Architecture Innovation</div>
+                            <div class="skill-item skill-leadership">Knowledge Transfer</div>
+                            <div class="skill-item skill-leadership">Institutional Excellence</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CAREER PATHS SECTION -->
+        <div class="career-paths">
+            <div class="career-paths-title">🎯 Career Progression Pathways</div>
+            <div class="paths-grid">
+                <div class="path-card">
+                    <div class="path-title">Technical Excellence Track</div>
+                    <div class="path-progression">
+                        <strong>Data & AI Scientist</strong> → <strong>Principal Data & AI Scientist</strong><br><br>
+                        Focus: Deep technical expertise, research leadership, AI innovation<br>
+                        Timeline: 36 months to Principal level<br>
+                        Key Skills: Advanced AI/ML, Research, Technical Leadership
+                    </div>
+                </div>
+                
+                <div class="path-card">
+                    <div class="path-title">Business Analytics Track</div>
+                    <div class="path-progression">
+                        <strong>Analytics Specialist</strong> → <strong>Senior Analytics Leader</strong><br><br>
+                        Focus: Business impact, stakeholder management, analytics transformation<br>
+                        Timeline: 30 months to Senior level<br>
+                        Key Skills: Business Acumen, Communication, Strategic Thinking
+                    </div>
+                </div>
+                
+                <div class="path-card">
+                    <div class="path-title">Engineering Excellence Track</div>
+                    <div class="path-progression">
+                        <strong>Analytics Engineer</strong> → <strong>Distinguished Engineer</strong><br><br>
+                        Focus: Technical systems, infrastructure, platform engineering<br>
+                        Timeline: 36 months to Distinguished level<br>
+                        Key Skills: System Design, MLOps, Technical Architecture
+                    </div>
+                </div>
+                
+                <div class="path-card">
+                    <div class="path-title">Architecture Leadership Track</div>
+                    <div class="path-progression">
+                        <strong>Analytics Architect</strong> → <strong>Distinguished Architect</strong><br><br>
+                        Focus: Enterprise architecture, strategic design, technology vision<br>
+                        Timeline: 36 months to Distinguished level<br>
+                        Key Skills: Architecture Design, Strategic Planning, Technology Leadership
+                    </div>
+                </div>
+                
+                <div class="path-card">
+                    <div class="path-title">Cross-Functional Transitions</div>
+                    <div class="path-progression">
+                        <strong>Horizontal Movement Opportunities:</strong><br>
+                        • Analytics Specialist ↔ Data Scientist<br>
+                        • Analytics Engineer ↔ Analytics Architect<br>
+                        • Technical roles → Management tracks<br>
+                        Timeline: 12-18 months transition period
+                    </div>
+                </div>
+                
+                <div class="path-card">
+                    <div class="path-title">Leadership & Management Track</div>
+                    <div class="path-progression">
+                        <strong>All roles</strong> → <strong>Management Positions</strong><br><br>
+                        Focus: People leadership, organizational development, strategic management<br>
+                        Timeline: Available after 18+ months experience<br>
+                        Key Skills: Leadership, Strategy, Change Management
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- KEY METRICS SECTION -->
+        <div class="key-metrics">
+            <div class="metrics-title">📊 Career Progression Success Metrics</div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">6M</div>
+                    <div class="metric-label">Skill Assessment Intervals</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">80%</div>
+                    <div class="metric-label">Internal Promotion Rate</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">24M</div>
+                    <div class="metric-label">Average Time to Senior Role</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">95%</div>
+                    <div class="metric-label">Skills Relevance in AI Market</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">4x</div>
+                    <div class="metric-label">Career Acceleration vs Traditional</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">360°</div>
+                    <div class="metric-label">Feedback & Development</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- IMPLEMENTATION FRAMEWORK -->
+        <div style="background: #f8f9fa; padding: 40px; margin: 30px 40px; border-radius: 20px;">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #2c3e50; font-size: 1.8em;">🚀 Implementation Framework</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+                <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-left: 4px solid #667eea;">
+                    <h3 style="color: #667eea; margin-bottom: 15px; font-size: 1.3em;">Assessment & Baseline</h3>
+                    <ul style="color: #666; line-height: 1.8; margin: 0; padding-left: 20px;">
+                        <li>Current skill gap analysis</li>
+                        <li>Individual development planning</li>
+                        <li>Role alignment assessment</li>
+                        <li>AI readiness evaluation</li>
+                    </ul>
+                </div>
+                
+                <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-left: 4px solid #f093fb;">
+                    <h3 style="color: #f093fb; margin-bottom: 15px; font-size: 1.3em;">Learning & Development</h3>
+                    <ul style="color: #666; line-height: 1.8; margin: 0; padding-left: 20px;">
+                        <li>Azure-focused training programs</li>
+                        <li>Hands-on AI project experience</li>
+                        <li>Mentorship and coaching</li>
+                        <li>Industry certification pathways</li>
+                    </ul>
+                </div>
+                
+                <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-left: 4px solid #764ba2;">
+                    <h3 style="color: #764ba2; margin-bottom: 15px; font-size: 1.3em;">Performance Tracking</h3>
+                    <ul style="color: #666; line-height: 1.8; margin: 0; padding-left: 20px;">
+                        <li>6-monthly skill assessments</li>
+                        <li>Project-based evaluations</li>
+                        <li>360-degree feedback</li>
+                        <li>Business impact measurement</li>
+                    </ul>
+                </div>
+                
+                <div style="background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-left: 4px solid #f5576c;">
+                    <h3 style="color: #f5576c; margin-bottom: 15px; font-size: 1.3em;">Career Advancement</h3>
+                    <ul style="color: #666; line-height: 1.8; margin: 0; padding-left: 20px;">
+                        <li>Clear promotion criteria</li>
+                        <li>Cross-functional opportunities</li>
+                        <li>Leadership development programs</li>
+                        <li>Industry recognition support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- AI MARKET ALIGNMENT -->
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 30%, #f093fb 100%); color: white; padding: 40px; margin: 30px 40px; border-radius: 20px; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%); pointer-events: none;"></div>
+            
+            <h2 style="text-align: center; margin-bottom: 30px; font-size: 2em; position: relative; z-index: 1;">🤖 AI Market Alignment Strategy</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; position: relative; z-index: 1;">
+                <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.3);">
+                    <h3 style="margin-bottom: 15px; font-size: 1.3em;">Emerging AI Trends</h3>
+                    <ul style="line-height: 1.6; margin: 0; padding-left: 20px; opacity: 0.9;">
+                        <li>Generative AI Integration</li>
+                        <li>Agentic AI Systems</li>
+                        <li>Multi-modal AI Applications</li>
+                        <li>Edge AI Processing</li>
+                        <li>Autonomous Decision Systems</li>
+                    </ul>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.3);">
+                    <h3 style="margin-bottom: 15px; font-size: 1.3em;">Market Demand Skills</h3>
+                    <ul style="line-height: 1.6; margin: 0; padding-left: 20px; opacity: 0.9;">
+                        <li>Prompt Engineering</li>
+                        <li>AI Ethics & Governance</li>
+                        <li>MLOps & AI Operations</li>
+                        <li>Cloud-Native AI Development</li>
+                        <li>Real-time AI Applications</li>
+                    </ul>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.3);">
+                    <h3 style="margin-bottom: 15px; font-size: 1.3em;">Future Readiness</h3>
+                    <ul style="line-height: 1.6; margin: 0; padding-left: 20px; opacity: 0.9;">
+                        <li>6G AI Integration</li>
+                        <li>Quantum-AI Hybrid Systems</li>
+                        <li>Autonomous Network Operations</li>
+                        <li>Industry 4.0 Applications</li>
+                        <li>Sustainable AI Development</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- FOOTER -->
+        <div style="background: #2c3e50; color: white; padding: 30px; text-align: center;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div style="font-size: 1.1em; font-weight: 600;">
+                    🎯 Next Steps: Skills Assessment • Training Program Design • Mentorship Matching • Performance Framework
+                </div>
+                <div style="font-size: 1em; opacity: 0.8;">
+                    Career Progression Roadmap 2025-2027 • Data Science & Advanced Analytics Excellence
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Interactive timeline periods
+        document.querySelectorAll('.timeline-period').forEach(period => {
+            period.addEventListener('click', function() {
+                document.querySelectorAll('.timeline-period').forEach(p => p.classList.remove('active'));
+                this.classList.add('active');
+                
+                // You could add functionality here to highlight corresponding timeline sections
+                console.log('Selected period:', this.textContent);
+            });
+        });
+        
+        // Smooth scroll animation for progression arrows
+        document.querySelectorAll('.progression-arrow').forEach(arrow => {
+            arrow.addEventListener('click', function() {
+                const nextColumn = this.closest('.period-column').nextElementSibling;
+                if (nextColumn) {
+                    nextColumn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            });
+        });
+        
+        // Add hover effects for skill items
+        document.querySelectorAll('.skill-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(5px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
