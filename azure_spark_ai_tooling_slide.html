@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tooling Strategy: Azure-Spark Strategic Partnership</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0078d4 0%, #00bcf2 30%, #40e0d0 70%, #7b68ee 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #2c3e50;
+        }
+        
+        .slide {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.15);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0078d4 0%, #005a9e 50%, #003d6b 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(64, 224, 208, 0.2) 0%, transparent 50%);
+            animation: pulse 6s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.3; }
+            50% { transform: scale(1.05) rotate(180deg); opacity: 0.6; }
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: 300;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .partnership-banner {
+            background: linear-gradient(135deg, #40e0d0 0%, #00bcf2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: 600px;
+        }
+        
+        .ai-tooling-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 40px;
+            border-right: 2px solid rgba(0, 120, 212, 0.2);
+        }
+        
+        .skills-evolution-section {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            padding: 40px;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: #0078d4;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #0078d4, #40e0d0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+        }
+        
+        .tooling-stack {
+            display: grid;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .tool-category {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid #0078d4;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .tool-category:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .tool-title {
+            font-weight: 600;
+            font-size: 1.1em;
+            color: #0078d4;
+            margin-bottom: 8px;
+        }
+        
+        .tool-description {
+            font-size: 0.9em;
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        .tool-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0078d4, #00bcf2);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 500;
+            margin: 5px 5px 0 0;
+        }
+        
+        .skills-roadmap {
+            display: grid;
+            gap: 25px;
+        }
+        
+        .skill-phase {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            padding: 25px;
+            border-left: 4px solid #7b68ee;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-phase:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .phase-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .phase-number {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #7b68ee, #9370db);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .phase-title {
+            font-weight: 600;
+            font-size: 1.2em;
+            color: #7b68ee;
+        }
+        
+        .phase-timeline {
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .skill-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .skill-item {
+            background: rgba(123, 104, 238, 0.1);
+            color: #5b21b6;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.85em;
+            font-weight: 500;
+            text-align: center;
+            border: 1px solid rgba(123, 104, 238, 0.2);
+        }
+        
+        .key-benefits {
+            background: linear-gradient(135deg, #0078d4 0%, #40e0d0 100%);
+            color: white;
+            padding: 30px;
+            margin: 30px 40px;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .key-benefits::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .benefits-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .benefit-item {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.3);
+            text-align: center;
+        }
+        
+        .benefit-metric {
+            font-size: 2.2em;
+            font-weight: bold;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #ffffff, #f1f5f9);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .benefit-label {
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+        
+        .footer {
+            background: #f8fafc;
+            padding: 25px 40px;
+            text-align: center;
+            border-top: 1px solid rgba(0, 120, 212, 0.2);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .next-steps {
+            font-weight: 600;
+            color: #0078d4;
+        }
+        
+        .partnership-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #666;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1>AI Tooling Strategy</h1>
+            <div class="subtitle">Future-Ready Architecture Aligned to Strategic Partnership</div>
+        </div>
+        
+        <div class="partnership-banner">
+            🤝 Leveraging Azure-Spark Strategic Partnership for AI-Native Transformation
+        </div>
+        
+        <div class="content-grid">
+            <div class="ai-tooling-section">
+                <div class="section-title">
+                    <div class="section-icon">🛠️</div>
+                    Azure AI Tooling Stack
+                </div>
+                
+                <div class="tooling-stack">
+                    <div class="tool-category">
+                        <div class="tool-title">Core AI Platform</div>
+                        <div class="tool-description">Enterprise-grade AI services with 96% tier-1 telco adoption</div>
+                        <div class="tool-badge">Azure OpenAI Service</div>
+                        <div class="tool-badge">Azure AI Foundry</div>
+                        <div class="tool-badge">Machine Learning Studio</div>
+                    </div>
+                    
+                    <div class="tool-category">
+                        <div class="tool-title">Unified Data Platform</div>
+                        <div class="tool-description">Telco industry data model launching April 2025</div>
+                        <div class="tool-badge">Microsoft Fabric</div>
+                        <div class="tool-badge">Azure Data Factory</div>
+                        <div class="tool-badge">Power BI Premium</div>
+                    </div>
+                    
+                    <div class="tool-category">
+                        <div class="tool-title">Cloud-Native Infrastructure</div>
+                        <div class="tool-description">Carrier-grade hybrid cloud for telco workloads</div>
+                        <div class="tool-badge">Azure Kubernetes Service</div>
+                        <div class="tool-badge">Azure for Operators</div>
+                        <div class="tool-badge">Azure Arc</div>
+                    </div>
+                    
+                    <div class="tool-category">
+                        <div class="tool-title">Edge & IoT Intelligence</div>
+                        <div class="tool-description">Distributed AI processing at network edge</div>
+                        <div class="tool-badge">Azure IoT Edge</div>
+                        <div class="tool-badge">Azure Edge Zones</div>
+                        <div class="tool-badge">Digital Twins</div>
+                    </div>
+                    
+                    <div class="tool-category">
+                        <div class="tool-title">Integration & APIs</div>
+                        <div class="tool-description">Unified service layer for AI and network functions</div>
+                        <div class="tool-badge">API Management</div>
+                        <div class="tool-badge">Logic Apps</div>
+                        <div class="tool-badge">Service Bus</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skills-evolution-section">
+                <div class="section-title">
+                    <div class="section-icon">📈</div>
+                    Team Skills Evolution
+                </div>
+                
+                <div class="skills-roadmap">
+                    <div class="skill-phase">
+                        <div class="phase-header">
+                            <div class="phase-number">1</div>
+                            <div>
+                                <div class="phase-title">Foundation Building</div>
+                                <div class="phase-timeline">0-6 months</div>
+                            </div>
+                        </div>
+                        <div class="skill-list">
+                            <div class="skill-item">Azure Fundamentals</div>
+                            <div class="skill-item">Azure OpenAI Service</div>
+                            <div class="skill-item">Prompt Engineering</div>
+                            <div class="skill-item">Azure DevOps</div>
+                            <div class="skill-item">Kubernetes Basics</div>
+                            <div class="skill-item">Power Platform</div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-phase">
+                        <div class="phase-header">
+                            <div class="phase-number">2</div>
+                            <div>
+                                <div class="phase-title">AI Specialization</div>
+                                <div class="phase-timeline">6-12 months</div>
+                            </div>
+                        </div>
+                        <div class="skill-list">
+                            <div class="skill-item">MLOps with Azure ML</div>
+                            <div class="skill-item">Microsoft Fabric</div>
+                            <div class="skill-item">AI Agent Development</div>
+                            <div class="skill-item">Azure Arc Management</div>
+                            <div class="skill-item">Responsible AI</div>
+                            <div class="skill-item">Custom Model Training</div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-phase">
+                        <div class="phase-header">
+                            <div class="phase-number">3</div>
+                            <div>
+                                <div class="phase-title">Advanced AI Architecture</div>
+                                <div class="phase-timeline">12-18 months</div>
+                            </div>
+                        </div>
+                        <div class="skill-list">
+                            <div class="skill-item">AI System Design</div>
+                            <div class="skill-item">Edge AI Deployment</div>
+                            <div class="skill-item">Agentic AI Systems</div>
+                            <div class="skill-item">Azure for Operators</div>
+                            <div class="skill-item">AI Security & Governance</div>
+                            <div class="skill-item">Telco AI Solutions</div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-phase">
+                        <div class="phase-header">
+                            <div class="phase-number">4</div>
+                            <div>
+                                <div class="phase-title">AI Leadership & Innovation</div>
+                                <div class="phase-timeline">18+ months</div>
+                            </div>
+                        </div>
+                        <div class="skill-list">
+                            <div class="skill-item">AI Strategy & Vision</div>
+                            <div class="skill-item">Cross-Platform Integration</div>
+                            <div class="skill-item">Industry Innovation</div>
+                            <div class="skill-item">AI Product Management</div>
+                            <div class="skill-item">Ecosystem Partnership</div>
+                            <div class="skill-item">6G AI Preparation</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="key-benefits">
+            <div class="benefits-title">🎯 Strategic Partnership Benefits</div>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-metric">4x</div>
+                    <div class="benefit-label">ROI on AI Investments</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-metric">90%</div>
+                    <div class="benefit-label">Employee Productivity Gain</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-metric">20%</div>
+                    <div class="benefit-label">Reduction in Follow-up</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-metric">75%</div>
+                    <div class="benefit-label">Faster Development Cycles</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="footer-content">
+                <div class="next-steps">
+                    <strong>Next Steps:</strong> Azure AI Pilot Program • Team Training Roadmap • Partnership Activation
+                </div>
+                <div class="partnership-logo">
+                    <span>🔷 Microsoft Azure</span>
+                    <span>+</span>
+                    <span>⚡ Spark NZ</span>
+                    <span>Partnership</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
